@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "newLine": "LF",
+    "outDir": "build",
+    "typeRoots": [
+      "types",
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "test"
+  ]
+}

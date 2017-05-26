@@ -1,0 +1,85 @@
+{
+  "name": "responder",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "6.10.x"
+  },
+  "scripts": {
+    "major": "npm version major -m \"New major version %s\"",
+    "minor": "npm version minor -m \"New minor version %s\"",
+    "patch": "npm version patch -m \"New patch version %s\"",
+    "lint": "tslint 'src/**/*.ts' 'types/**/*.ts'",
+    "lint-fix": "tslint --fix 'src/**/*.ts' 'types/**/*.ts'",
+    "dev": "ts-node src/main.ts",
+    "watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/main.ts",
+    "clean": "rm -rf build/",
+    "prebuild": "yarn && yarn run lint && yarn run clean",
+    "build": "tsc",
+    "prestart": "yarn run build",
+    "start": "node build/main.js",
+    "pretest": "yarn run lint",
+    "test": "jest",
+    "nsp": "nsp check",
+    "changelog": "github_changelog_generator"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": [
+      "**/(__tests__|tests|test)/**/*test.(ts|tsx)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx,ts,tsx}",
+      "!**/*.{d.ts,d.tsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/build/**",
+      "!**/config/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    }
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "config": "^1.26.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "helmet": "^3.6.1",
+    "http-errors": "^1.6.1",
+    "lodash": "^4.17.4",
+    "log4js": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/config": "^0.0.32",
+    "@types/body-parser": "^1.16.3",
+    "@types/express": "4.0.35",
+    "@types/express-serve-static-core": "^4.0.45",
+    "@types/jest": "^19.2.3",
+    "@types/lodash": "^4.14.64",
+    "@types/log4js": "0.0.32",
+    "@types/node": "7.0.22",
+    "jest": "^20.0.3",
+    "nodemon": "^1.11.0",
+    "nsp": "^2.6.3",
+    "ts-jest": "^20.0.4",
+    "ts-node": "^3.0.4",
+    "tslint": "^5.3.2",
+    "tslint-config-airbnb": "^5.0.1",
+    "typescript": "^2.3.3"
+  }
+}
