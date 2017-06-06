@@ -9,7 +9,7 @@ COPY . /app
 
 # Install service dependencies
 COPY ./package.json ./yarn.lock /app/
-RUN yarn
+RUN yarn && yarn run build
 
 EXPOSE 3000
 CMD ["yarn", "start"]

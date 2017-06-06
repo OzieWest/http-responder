@@ -1,49 +1,41 @@
 {
   "name": "responder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "engines": {
-    "node": "6.10.x"
+    "node": "6.10"
   },
   "scripts": {
-    "major": "npm version major -m \"New major version %s\"",
-    "minor": "npm version minor -m \"New minor version %s\"",
-    "patch": "npm version patch -m \"New patch version %s\"",
-    "lint": "tslint 'src/**/*.ts' 'types/**/*.ts'",
-    "lint-fix": "tslint --fix 'src/**/*.ts' 'types/**/*.ts'",
     "dev": "ts-node src/main.ts",
     "watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/main.ts",
+    "lint": "tslint 'src/**/*.ts' 'types/**/*.ts'",
+    "lint-fix": "tslint --fix 'src/**/*.ts' 'types/**/*.ts'",
     "clean": "rm -rf build/",
-    "prebuild": "yarn && yarn run lint && yarn run clean",
+    "prebuild": "yarn run lint && yarn run clean",
     "build": "tsc",
-    "prestart": "yarn run build",
     "start": "node build/main.js",
     "pretest": "yarn run lint",
     "test": "jest",
-    "nsp": "nsp check",
-    "changelog": "github_changelog_generator"
+    "nsp": "nsp check"
   },
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testMatch": [
-      "**/(__tests__|tests|test)/**/*test.(ts|tsx)"
+      "**/test/**/*.test.ts"
     ],
     "moduleFileExtensions": [
-      "ts",
-      "tsx",
+      "node",
       "js",
-      "json"
+      "jsx",
+      "json",
+      "ts",
+      "tsx"
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{js,jsx,ts,tsx}",
-      "!**/*.{d.ts,d.tsx}",
-      "!**/node_modules/**",
-      "!**/coverage/**",
-      "!**/build/**",
-      "!**/config/**"
+      "src/**/*.ts"
     ],
     "coverageThreshold": {
       "global": {
